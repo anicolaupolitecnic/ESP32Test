@@ -5,6 +5,7 @@ using static DianaController;
 
 public class RayCastController : MonoBehaviour
 {
+    [SerializeField] private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,22 +30,27 @@ public class RayCastController : MonoBehaviour
             {
                 case PointsHit.Bad:
                     Debug.Log("10");
+                    gameManager.SetNewPuntuation(PointsHit.Bad);
                     break;
 
                 case PointsHit.Good:
                     Debug.Log("25");
+                    gameManager.SetNewPuntuation(PointsHit.Good);
                     break;
                 
                 case PointsHit.VeryGood:
                     Debug.Log("50");
+                    gameManager.SetNewPuntuation(PointsHit.VeryGood);
                     break;
 
                 case PointsHit.Perfect:
                     Debug.Log("100");
+                    gameManager.SetNewPuntuation(PointsHit.Perfect);
                     break;
 
                 case PointsHit.Gold:
                     Debug.Log("200");
+                    gameManager.SetNewPuntuation(PointsHit.Gold);
                     break;
             }
             //Destroy(hit.collider.transform.root.gameObject);
@@ -52,6 +58,7 @@ public class RayCastController : MonoBehaviour
         else
         {
             Debug.Log("Miss");
+            gameManager.SetNewPuntuation(PointsHit.Miss);
         }
     }
 }

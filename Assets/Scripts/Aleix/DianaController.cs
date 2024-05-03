@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,13 +7,15 @@ public class DianaController : MonoBehaviour
 {
     [SerializeField] private PointsHit pointType;
 
+    [Serializable]
     public enum PointsHit
     {
         Bad,
         Good,
         VeryGood,
         Perfect,
-        Gold
+        Gold,
+        Miss
     }
 
 
