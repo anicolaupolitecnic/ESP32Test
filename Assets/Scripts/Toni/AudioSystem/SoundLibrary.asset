@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e26e5dba8e1f8e47b864196b6558eac, type: 3}
+  m_Name: SoundLibrary
+  m_EditorClassIdentifier: 
+  soundClips:
+  - soundName: 0
+    audioClip: {fileID: 8300000, guid: 272a19f5fc36fc64aa2d8031bc10d6c9, type: 3}
+    loop: 1
+    volume: 0.5
+    hasPlayTimer: 0
+    playTimer: 0
+    spacialBlend: 1
+  - soundName: 1
+    audioClip: {fileID: 8300000, guid: 67f2abeca09dc1644b6238e2731e93bd, type: 3}
+    loop: 1
+    volume: 0.5
+    hasPlayTimer: 0
+    playTimer: 0
+    spacialBlend: 1
+  - soundName: 2
+    audioClip: {fileID: 8300000, guid: 00c60445cf384204e9b8690610209dd7, type: 3}
+    loop: 0
+    volume: 0.25
+    hasPlayTimer: 0
+    playTimer: 0
+    spacialBlend: 1
+  - soundName: 4
+    audioClip: {fileID: 8300000, guid: 8ad7ec09d9e03b940ac9a72cd419359a, type: 3}
+    loop: 0
+    volume: 1
+    hasPlayTimer: 0
+    playTimer: 0
+    spacialBlend: 1
+  - soundName: 3
+    audioClip: {fileID: 8300000, guid: 7dc51a4a578ead745baecb45b6c4dcdd, type: 3}
+    loop: 0
+    volume: 1
+    hasPlayTimer: 0
+    playTimer: 0
+    spacialBlend: 1
+  fxVolume: 100
+  musicVolume: 77.44363
