@@ -24,8 +24,11 @@ public class SoundLibrary : ScriptableObject
 /// </summary>
 public enum SoundName
 {
-   Shoot,
-   AmbientalMusic,
+    Menu_music,
+    Game_music,
+    Shot,
+    Impact,
+    Missed
 }
 
 [System.Serializable]
