@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int miss;
 
     [Header("Final Score Texts")]
+    [SerializeField] private GameObject finalScorePanel;
     [Header("Nº Hits")]
     [SerializeField] private TextMeshProUGUI nhitsBad;
     [SerializeField] private TextMeshProUGUI nhitsGood;
@@ -120,11 +121,6 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.P))
         {
             SumFinalScore();
-            foreach (KeyValuePair<PointsHit, int> kvp in finalScoreList)
-            {
-                Debug.Log(kvp.Key + ": " + kvp.Value);
-            }
-            Debug.Log("Final score: " + finalScore);
             ShowFinalSore();
         }
     }
@@ -197,5 +193,6 @@ public class GameManager : MonoBehaviour
             }
         }
         scoreTotal.text = finalScore.ToString();
+        finalScorePanel.SetActive(true);
     }
 }
