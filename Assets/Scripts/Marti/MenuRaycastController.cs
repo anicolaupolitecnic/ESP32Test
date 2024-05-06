@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuRaycastController : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI texteInici;
+    [SerializeField] private Button texteInici;
     [SerializeField] private GameMenu menuCanvas;
+    
+    private bool iniciJoc;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        iniciJoc = true;
     }
 
     // Update is called once per frame
@@ -20,6 +23,17 @@ public class MenuRaycastController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             TirarRaycast();
+
+            if (iniciJoc)
+            {
+                texteInici.gameObject.SetActive(false);
+
+                Vector3 enfrente = new Vector3(transform.position.x, transform.position.y + 10, transform.position.z+ 2020);
+
+                Instantiate(menuCanvas, enfrente, Quaternion.identity);
+
+                iniciJoc = false;
+            }
         }
 
     }

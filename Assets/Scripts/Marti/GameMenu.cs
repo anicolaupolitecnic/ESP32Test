@@ -11,21 +11,9 @@ public class GameMenu : MonoBehaviour
     private float soundVolume;
     [SerializeField] SoundLibrary soundLibrary;
 
-    //private AudioSource musicasound;
-
 
     [SerializeField] private GameObject principalMenu;
     [SerializeField] private GameObject highscoreMenu;
-    //[SerializeField] private GameObject aboutMenu;
-    //[SerializeField] private GameObject creatorsMenu;
-
-    //public GameObject menuFirstButton, optionsFirstButton, controlsFirstButton, aboutFirstButton, creatorsFirstButton;
-
-
-    private void Start()
-    {
-
-    }
 
     //Obrir Scene Joc
     public void StartGame()
@@ -34,14 +22,6 @@ public class GameMenu : MonoBehaviour
         //SceneManager.LoadScene("PlayerSelection");
     }
 
-    ////Tancar Menu About
-    //public void CloseMenuAbout()
-    //{
-    //    aboutMenu.SetActive(false);
-    //    //EventSystem.current.SetSelectedGameObject(menuFirstButton);
-    //    principalMenu.SetActive(true);
-    //}
-
     //Tancar Menu Puntuacio
     public void CloseMenuHighScore()
     {
@@ -49,22 +29,6 @@ public class GameMenu : MonoBehaviour
         //EventSystem.current.SetSelectedGameObject(menuFirstButton);
         principalMenu.SetActive(true);
     }
-
-    ////Obrir Menu Options
-    //public void OpenMenuOptions()
-    //{
-    //    optMenu.SetActive(true);
-    //    //EventSystem.current.SetSelectedGameObject(optionsFirstButton);
-    //    principalMenu.SetActive(false);
-    //}
-
-    ////Obrir Menu About
-    //public void OpenMenuAbout()
-    //{
-    //    aboutMenu.SetActive(true);
-    //    //EventSystem.current.SetSelectedGameObject(aboutFirstButton);
-    //    principalMenu.SetActive(false);
-    //}
 
     //Obrir Menu Puntuacio
     public void OpenMenuHighScore()
