@@ -48,7 +48,7 @@ public class BullseyeSpawner : MonoBehaviour
         //     zDistance,
         //    -zDistance
         //};
-        transform.position = new Vector3(0, 0, 5);
+        transform.position = player.forward * zDistance;
         //lastBullseye = transform.position;
         SpawnBullseye();
     }
@@ -101,7 +101,6 @@ public class BullseyeSpawner : MonoBehaviour
 
     private void SpawnBullseye()
     {
-        timer = 0;
         if (firstSpawn)
         {
             //lastBullseye = transform.localPosition;
@@ -124,6 +123,7 @@ public class BullseyeSpawner : MonoBehaviour
             GameObject bullseye = Instantiate(bullseyePrefab, transform.position, transform.rotation);
             //player.LookAt(bullseye.transform);
             Destroy(bullseye, bullseyeTime);
-        }        
+        }
+    timer = 0;
     }
 }
