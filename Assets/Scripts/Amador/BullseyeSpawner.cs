@@ -10,8 +10,8 @@ public class BullseyeSpawner : MonoBehaviour
     [SerializeField] private GameObject bullseyePrefab;
     [SerializeField] private Transform player;
 
-    [SerializeField] private float xDistance = 5;
-    [SerializeField] private float yDistance = 5;
+    [SerializeField] private float xDistanceMove = 5;
+    [SerializeField] private float yDistanceMove = 5;
     [SerializeField] private float zDistance = 5;
 
     private float[] xDistancePossibilities;
@@ -20,11 +20,14 @@ public class BullseyeSpawner : MonoBehaviour
 
     [SerializeField] private float bullseyeTime;
     [SerializeField] private float spawnTime = 3;
-    [SerializeField] private float minDistance = 3;
-    [SerializeField] private float maxDistance = 5;
+
+    [SerializeField] private float maxYDistance = 10;
+
+    //[SerializeField] private float minDistance = 3;
+    //[SerializeField] private float maxzDistance = 5;
 
     private float timer = 0;
-    private Vector3 lastBullseye;
+    //private Vector3 lastBullseye;
 
     private bool firstSpawn = true;
     // Start is called before the first frame update
@@ -32,20 +35,21 @@ public class BullseyeSpawner : MonoBehaviour
     {
         xDistancePossibilities = new float[]
         {
-            xDistance,
-            -xDistance
+            xDistanceMove,
+            -xDistanceMove
         };
         yDistancePossibilities = new float[]
         {
-            yDistance,
-            -yDistance
+            yDistanceMove,
+            -yDistanceMove
         };
-        zDistancePossibilities = new float[]
-        {
-             zDistance,
-            -zDistance
-        };
-        lastBullseye = transform.localPosition;
+        //zDistancePossibilities = new float[]
+        //{
+        //     zDistance,
+        //    -zDistance
+        //};
+        transform.position = new Vector3(0, 0, 5);
+        //lastBullseye = transform.position;
         SpawnBullseye();
     }
 
@@ -56,31 +60,51 @@ public class BullseyeSpawner : MonoBehaviour
         if (timer > spawnTime)
         {
             SpawnBullseye();
-            timer = 0;
         }
 
-        float currentDistance = Vector3.Distance(player.position, transform.position);
-        Debug.Log(currentDistance);
-        if (currentDistance > maxDistance)
+        //float currentDistance = Vector3.Distance(player.position, transform.position);
+        //Debug.Log(currentDistance);
+
+        Vector3 localPos = transform.localPosition;
+        if(localPos.z != zDistance)
         {
-            Vector3 vect = player.position - transform.position;
-            vect = vect.normalized;
-            vect *= (currentDistance - maxDistance);
-            transform.position += vect;
-        }else if(currentDistance < minDistance)
-        {
-            Vector3 vect = player.position - transform.position;
-            vect = vect.normalized;
-            vect *= (currentDistance + minDistance);
-            transform.position += vect;
+            localPos.z = zDistance;
+            transform.localPosition = localPos;
+            Debug.Log(transform.localPosition);
         }
+
+        Vector3 pos = transform.position;
+        if(transform.position.y > maxYDistance)
+        {
+            pos.y = maxYDistance;
+            transform.position = pos;
+        }else if(transform.position.y < -maxYDistance)
+        {
+            pos.y = -maxYDistance;
+            transform.position = pos;
+        }
+
+        //if (currentDistance > maxDistance)
+        //{
+        //    Vector3 vect = player.position - transform.position;
+        //    vect = vect.normalized;
+        //    vect *= (currentDistance - maxDistance);
+        //    transform.position += vect;
+        //}else if(currentDistance < minDistance)
+        //{
+        //    Vector3 vect = player.position - transform.position;
+        //    vect = vect.normalized;
+        //    vect *= (currentDistance + minDistance);
+        //    transform.position += vect;
+        //}
     }
 
     private void SpawnBullseye()
     {
+        timer = 0;
         if (firstSpawn)
         {
-            lastBullseye = transform.localPosition;
+            //lastBullseye = transform.localPosition;
             GameObject bullseye = Instantiate(bullseyePrefab, transform.position, Quaternion.identity);
             bullseye.transform.LookAt(player);
             Destroy(bullseye, bullseyeTime);
@@ -90,16 +114,15 @@ public class BullseyeSpawner : MonoBehaviour
         {
             float xDistanceNext = xDistancePossibilities[Random.Range(0, xDistancePossibilities.Length)];
             float yDistanceNext = yDistancePossibilities[Random.Range(0, yDistancePossibilities.Length)];
-            float zDistanceNext = zDistancePossibilities[Random.Range(0, zDistancePossibilities.Length)];
+            //float zDistanceNext = zDistancePossibilities[Random.Range(0, zDistancePossibilities.Length)];
             Vector3 xPosition = transform.right * xDistanceNext;
             Vector3 yPosition = transform.up * yDistanceNext;
-            Vector3 zPosition = transform.forward * zDistanceNext;
-            transform.localPosition += xPosition + yPosition + zPosition;
+            //Vector3 zPosition = transform.forward * zDistanceNext;
+            transform.localPosition += xPosition + yPosition;
             transform.LookAt(player);
-            lastBullseye = transform.localPosition;
-            GameObject bullseye = Instantiate(bullseyePrefab, transform.localPosition, transform.rotation);
+            //lastBullseye = transform.position;
+            GameObject bullseye = Instantiate(bullseyePrefab, transform.position, transform.rotation);
             //player.LookAt(bullseye.transform);
-            //bullseye.transform.LookAt(player);
             Destroy(bullseye, bullseyeTime);
         }        
     }
