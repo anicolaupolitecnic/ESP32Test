@@ -446,6 +446,12 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 267862293}
+    - target: {fileID: 4003523875850902367, guid: f7864f4b6fe7a0546bfe88e30394a948,
+        type: 3}
+      propertyPath: bullseyePrefab
+      value: 
+      objectReference: {fileID: 913625774778394451, guid: 06a311e2d55c5cd4ca82d0f29c8eaaff,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
