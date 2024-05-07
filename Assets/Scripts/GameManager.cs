@@ -5,6 +5,8 @@ using System.Threading;
 using TMPro;
 using UnityEditor.Rendering.LookDev;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using static DianaController;
 
 public class GameManager : MonoBehaviour
@@ -16,6 +18,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject finalScorePanel;
     [SerializeField] private GameObject scorePanel;
     [SerializeField] private GameObject timePanel;
+    [SerializeField] private GameObject buttonPanel;
+    [SerializeField] private Button btnReplay;
 
     [Header("Timer Settings")]
     [SerializeField] private TextMeshProUGUI timerText;
@@ -28,6 +32,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int perfect;
     [SerializeField] private int gold;
     [SerializeField] private int miss;
+
+    [Header("High Score")]
+    [SerializeField] private SCOHighscore highscore;
+    [SerializeField] private GameObject textHighScore;
 
     [Header("Final Score Texts")]
     [Header("Nº Hits")]
@@ -54,6 +62,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreGold;
     [SerializeField] private TextMeshProUGUI scoreMiss;
     [SerializeField] private TextMeshProUGUI scoreTotal;
+
 
     private bool timerIsRunning = true;
 
@@ -103,6 +112,10 @@ public class GameManager : MonoBehaviour
             }
             count++;
         }
+
+        btnReplay.onClick.AddListener(() =>
+            SceneManager.LoadScene(0)
+        );
     }
 
     // Update is called once per frame
@@ -201,6 +214,12 @@ public class GameManager : MonoBehaviour
             }
         }
         scoreTotal.text = finalScore.ToString();
+        if (highscore.highscoreGame < finalScore)
+        {
+            highscore.highscoreGame = finalScore;
+            textHighScore.SetActive(true);
+        }
         finalScorePanel.SetActive(true);
+        buttonPanel.SetActive(true);
     }
 }
