@@ -1714,6 +1714,8 @@ MonoBehaviour:
   soundLibrary: {fileID: 11400000, guid: debdabb84c60dd545819507e0915fc1e, type: 2}
   principalMenu: {fileID: 8296197586595951714}
   highscoreMenu: {fileID: 6941326271927785469}
+  textHighscore: {fileID: 2975689563273739154}
+  scoHighscore: {fileID: 11400000, guid: 02613c593ca1f1241a321730ac697703, type: 2}
 --- !u!114 &7807565646120148808
 MonoBehaviour:
   m_ObjectHideFlags: 0

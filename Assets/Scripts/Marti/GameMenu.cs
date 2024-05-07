@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -15,18 +16,20 @@ public class GameMenu : MonoBehaviour
     [SerializeField] private GameObject principalMenu;
     [SerializeField] private GameObject highscoreMenu;
 
+    [SerializeField] private TextMeshProUGUI textHighscore;
+    [SerializeField] private SCOHighscore scoHighscore;
+
     //Obrir Scene Joc
     public void StartGame()
     {
         Debug.Log("StartGame");
-        //SceneManager.LoadScene("PlayerSelection");
+        SceneManager.LoadScene("MasterScene");
     }
 
     //Tancar Menu Puntuacio
     public void CloseMenuHighScore()
     {
         highscoreMenu.SetActive(false);
-        //EventSystem.current.SetSelectedGameObject(menuFirstButton);
         principalMenu.SetActive(true);
     }
 
@@ -35,8 +38,7 @@ public class GameMenu : MonoBehaviour
     {
         Debug.Log("MenuHighAbierto");
         highscoreMenu.SetActive(true);
-        //GameObject.FindGameObjectWithTag("Highscore").SetActive(true);
-        //EventSystem.current.SetSelectedGameObject(controlsFirstButton);
+        textHighscore.text = "HIGHSCORE: " + scoHighscore.HighscoreGame.ToString();
         principalMenu.SetActive(false);
     }
 

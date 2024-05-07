@@ -73,7 +73,6 @@ public class PressHold : MonoBehaviour
             switch (hit.collider.gameObject.name)
             {
                 case "Play":
-
                     gameMenu.StartGame();
                     break;
                 case "HighScore":
