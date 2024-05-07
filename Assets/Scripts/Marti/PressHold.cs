@@ -29,7 +29,7 @@ public class PressHold : MonoBehaviour
     {
         if (!holderOk)
         {
-            if (Input.GetKey(key)) // Si la tecla está presionada
+            if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0 || Input.GetMouseButtonDown(0)) // Si la tecla está presionada
             {
                 float newValue = slider.value + (speed * Time.deltaTime); // Calcular nuevo valor
                 slider.value = Mathf.Clamp(newValue, slider.minValue, slider.maxValue); // Limitar el valor dentro del rango
@@ -46,7 +46,7 @@ public class PressHold : MonoBehaviour
                 ComençarJoc();
             }
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0 || Input.GetMouseButtonDown(0))
         {
             TirarRaycast();
         }
