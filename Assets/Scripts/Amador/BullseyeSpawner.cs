@@ -74,7 +74,7 @@ public class BullseyeSpawner : MonoBehaviour
         {
             localPos.z = zDistance;
             transform.localPosition = localPos;
-            Debug.Log(transform.localPosition);
+            //Debug.Log(transform.localPosition);
         }
 
         Vector3 pos = transform.position;
@@ -117,6 +117,7 @@ public class BullseyeSpawner : MonoBehaviour
         else
         {
             float randValue = Random.value;
+            //Debug.Log(randValue);
             float xDistanceNext = xDistancePossibilities[Random.Range(0, xDistancePossibilities.Length)];
             float yDistanceNext = yDistancePossibilities[Random.Range(0, yDistancePossibilities.Length)];
             //float zDistanceNext = zDistancePossibilities[Random.Range(0, zDistancePossibilities.Length)];
@@ -128,7 +129,7 @@ public class BullseyeSpawner : MonoBehaviour
             //lastBullseye = transform.position;
             if (randValue > 0.75)
             {
-                bullseye = Instantiate(bullseyePrefab, transform.position, transform.rotation);
+                bullseye = Instantiate(goldBullseyePrefab, transform.position, transform.rotation);
             }
             else
             {
