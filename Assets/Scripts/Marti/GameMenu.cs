@@ -33,7 +33,9 @@ public class GameMenu : MonoBehaviour
     //Obrir Menu Puntuacio
     public void OpenMenuHighScore()
     {
+        Debug.Log("MenuHighAbierto");
         highscoreMenu.SetActive(true);
+        //GameObject.FindGameObjectWithTag("Highscore").SetActive(true);
         //EventSystem.current.SetSelectedGameObject(controlsFirstButton);
         principalMenu.SetActive(false);
     }
