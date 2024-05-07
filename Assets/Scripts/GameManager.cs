@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using TMPro;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using static DianaController;
 
@@ -10,6 +11,11 @@ public class GameManager : MonoBehaviour
 {
     // No canviar ordre de textMesh del ispector
     [SerializeField] private List<TextMeshProUGUI> puntuationTextList;
+
+    [Header("Panels HUD")]
+    [SerializeField] private GameObject finalScorePanel;
+    [SerializeField] private GameObject scorePanel;
+    [SerializeField] private GameObject timePanel;
 
     [Header("Timer Settings")]
     [SerializeField] private TextMeshProUGUI timerText;
@@ -24,7 +30,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int miss;
 
     [Header("Final Score Texts")]
-    [SerializeField] private GameObject finalScorePanel;
     [Header("Nº Hits")]
     [SerializeField] private TextMeshProUGUI nhitsBad;
     [SerializeField] private TextMeshProUGUI nhitsGood;
@@ -112,9 +117,12 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Time has run out!");
                 timeRemaining = 0;
                 timerIsRunning = false;
+                SumFinalScore();
+                timePanel.SetActive(false);
+                scorePanel.SetActive(false);
+                ShowFinalSore();
             }
         }
 
@@ -138,7 +146,7 @@ public class GameManager : MonoBehaviour
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
-        timerText.text = string.Format("{0:00}  {1:00}", minutes, seconds);
+        timerText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
     }
 
     private void SumFinalScore()

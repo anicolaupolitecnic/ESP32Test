@@ -33,31 +33,26 @@ public class RayCastController : MonoBehaviour
             switch (hit.collider.gameObject.GetComponent<DianaController>().GetPointType())
             {
                 case PointsHit.Bad:
-                    Debug.Log("10");
                     gameManager.SetNewPuntuation(PointsHit.Bad);
                     AudioManager.I.PlaySound(SoundName.Impact);
                     break;
 
                 case PointsHit.Good:
-                    Debug.Log("25");
                     gameManager.SetNewPuntuation(PointsHit.Good);
                     AudioManager.I.PlaySound(SoundName.Impact);
                     break;
                 
                 case PointsHit.VeryGood:
-                    Debug.Log("50");
                     gameManager.SetNewPuntuation(PointsHit.VeryGood);
                     AudioManager.I.PlaySound(SoundName.Impact);
                     break;
 
                 case PointsHit.Perfect:
-                    Debug.Log("100");
                     gameManager.SetNewPuntuation(PointsHit.Perfect);
                     AudioManager.I.PlaySound(SoundName.Impact);
                     break;
 
                 case PointsHit.Gold:
-                    Debug.Log("200");
                     gameManager.SetNewPuntuation(PointsHit.Gold);
                     AudioManager.I.PlaySound(SoundName.Impact);
                     break;
@@ -66,7 +61,6 @@ public class RayCastController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Miss");
             gameManager.SetNewPuntuation(PointsHit.Miss);
             AudioManager.I.PlaySound(SoundName.Missed);
         }
