@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6610103935505174325}
   - component: {fileID: 6471649115646343279}
+  - component: {fileID: 5297980780880765316}
   m_Layer: 0
   m_Name: DianaDorada
   m_TagString: Untagged
@@ -78,6 +79,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointType: 0
+--- !u!114 &5297980780880765316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6182317033447582743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865b11ff0a20a2e4dad6c6b10fcceaad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &170835232946966862
 PrefabInstance:
   m_ObjectHideFlags: 0
