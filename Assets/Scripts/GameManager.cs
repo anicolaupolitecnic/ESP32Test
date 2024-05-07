@@ -3,13 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using TMPro;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using static DianaController;
 
 public class GameManager : MonoBehaviour
 {
     // No canviar ordre de textMesh del ispector
     [SerializeField] private List<TextMeshProUGUI> puntuationTextList;
+
+    [Header("Panels HUD")]
+    [SerializeField] private GameObject finalScorePanel;
+    [SerializeField] private GameObject scorePanel;
+    [SerializeField] private GameObject timePanel;
+    [SerializeField] private GameObject buttonPanel;
+    [SerializeField] private Button btnReplay;
 
     [Header("Timer Settings")]
     [SerializeField] private TextMeshProUGUI timerText;
@@ -23,8 +33,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int gold;
     [SerializeField] private int miss;
 
+    [Header("High Score")]
+    [SerializeField] private SCOHighscore highscore;
+    [SerializeField] private GameObject textHighScore;
+
     [Header("Final Score Texts")]
-    [SerializeField] private GameObject finalScorePanel;
     [Header("Nº Hits")]
     [SerializeField] private TextMeshProUGUI nhitsBad;
     [SerializeField] private TextMeshProUGUI nhitsGood;
@@ -49,6 +62,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreGold;
     [SerializeField] private TextMeshProUGUI scoreMiss;
     [SerializeField] private TextMeshProUGUI scoreTotal;
+
 
     private bool timerIsRunning = true;
 
@@ -98,6 +112,10 @@ public class GameManager : MonoBehaviour
             }
             count++;
         }
+
+        btnReplay.onClick.AddListener(() =>
+            SceneManager.LoadScene(0)
+        );
     }
 
     // Update is called once per frame
@@ -112,9 +130,12 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Time has run out!");
                 timeRemaining = 0;
                 timerIsRunning = false;
+                SumFinalScore();
+                timePanel.SetActive(false);
+                scorePanel.SetActive(false);
+                ShowFinalSore();
             }
         }
 
@@ -138,7 +159,7 @@ public class GameManager : MonoBehaviour
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
-        timerText.text = string.Format("{0:00}  {1:00}", minutes, seconds);
+        timerText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
     }
 
     private void SumFinalScore()
@@ -193,6 +214,12 @@ public class GameManager : MonoBehaviour
             }
         }
         scoreTotal.text = finalScore.ToString();
+        if (highscore.highscoreGame < finalScore)
+        {
+            highscore.highscoreGame = finalScore;
+            textHighScore.SetActive(true);
+        }
         finalScorePanel.SetActive(true);
+        buttonPanel.SetActive(true);
     }
 }

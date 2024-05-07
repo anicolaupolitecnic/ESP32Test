@@ -38,7 +38,7 @@ public class GameMenu : MonoBehaviour
     {
         Debug.Log("MenuHighAbierto");
         highscoreMenu.SetActive(true);
-        textHighscore.text = "HIGHSCORE: " + scoHighscore.HighscoreGame.ToString();
+        textHighscore.text = "HIGHSCORE: " + scoHighscore.highscoreGame.ToString();
         principalMenu.SetActive(false);
     }
 
