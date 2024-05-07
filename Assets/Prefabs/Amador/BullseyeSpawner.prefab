@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a60861c82f3944eb0bcb2893b5aebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullseyePrefab: {fileID: 913625774778394451, guid: 2ea56c337f76f11458a2998d5c7b7a1f,
+  bullseyePrefab: {fileID: 913625774778394451, guid: 06a311e2d55c5cd4ca82d0f29c8eaaff,
     type: 3}
   goldBullseyePrefab: {fileID: 6182317033447582743, guid: 5a7a2b2b3acfc17419e1d446f104f6a7,
     type: 3}
