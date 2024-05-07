@@ -8,23 +8,28 @@ public class MenuRaycastController : MonoBehaviour
 {
     [SerializeField] private Button texteInici;
     [SerializeField] private GameMenu menuCanvas;
-    
+
+    private int contador;
     private bool iniciJoc;
 
     // Start is called before the first frame update
     void Start()
     {
         iniciJoc = true;
+        contador = 0;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0 || Input.GetMouseButtonDown(0))
         {
             TirarRaycast();
 
-            if (iniciJoc)
+            contador++;
+
+            if (iniciJoc & contador == 3)
             {
                 texteInici.gameObject.SetActive(false);
 
@@ -57,7 +62,7 @@ public class MenuRaycastController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Miss");
+            //Debug.Log("Miss");
    
         }
     }
