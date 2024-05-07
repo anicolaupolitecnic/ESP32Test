@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Runtime.ExceptionServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 
 public class BullseyeSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject bullseyePrefab;
+    [SerializeField] private GameObject goldBullseyePrefab;
     [SerializeField] private Transform player;
 
     [SerializeField] private float xDistanceMove = 5;
@@ -16,7 +18,7 @@ public class BullseyeSpawner : MonoBehaviour
 
     private float[] xDistancePossibilities;
     private float[] yDistancePossibilities;
-    private float[] zDistancePossibilities;
+    //private float[] zDistancePossibilities;
 
     [SerializeField] private float bullseyeTime;
     [SerializeField] private float spawnTime = 3;
@@ -30,6 +32,8 @@ public class BullseyeSpawner : MonoBehaviour
     //private Vector3 lastBullseye;
 
     private bool firstSpawn = true;
+
+    private GameObject bullseye;
     // Start is called before the first frame update
     void Start()
     {
@@ -70,7 +74,7 @@ public class BullseyeSpawner : MonoBehaviour
         {
             localPos.z = zDistance;
             transform.localPosition = localPos;
-            Debug.Log(transform.localPosition);
+            //Debug.Log(transform.localPosition);
         }
 
         Vector3 pos = transform.position;
@@ -99,8 +103,9 @@ public class BullseyeSpawner : MonoBehaviour
         //}
     }
 
-    private void SpawnBullseye()
+    public void SpawnBullseye()
     {
+        bullseye = null;
         if (firstSpawn)
         {
             //lastBullseye = transform.localPosition;
@@ -111,6 +116,8 @@ public class BullseyeSpawner : MonoBehaviour
         }
         else
         {
+            float randValue = Random.value;
+            Debug.Log(randValue);
             float xDistanceNext = xDistancePossibilities[Random.Range(0, xDistancePossibilities.Length)];
             float yDistanceNext = yDistancePossibilities[Random.Range(0, yDistancePossibilities.Length)];
             //float zDistanceNext = zDistancePossibilities[Random.Range(0, zDistancePossibilities.Length)];
@@ -120,7 +127,15 @@ public class BullseyeSpawner : MonoBehaviour
             transform.localPosition += xPosition + yPosition;
             transform.LookAt(player);
             //lastBullseye = transform.position;
-            GameObject bullseye = Instantiate(bullseyePrefab, transform.position, transform.rotation);
+            if (randValue > 0.75)
+            {
+                bullseye = Instantiate(goldBullseyePrefab, transform.position, transform.rotation);
+            }
+            else
+            {
+                bullseye = Instantiate(bullseyePrefab, transform.position, transform.rotation);
+            }
+            
             //player.LookAt(bullseye.transform);
             Destroy(bullseye, bullseyeTime);
         }

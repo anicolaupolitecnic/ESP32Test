@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4003523875850902367}
   m_Layer: 0
   m_Name: BullseyeSpawner
-  m_TagString: Untagged
+  m_TagString: BullseyeSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullseyePrefab: {fileID: 913625774778394451, guid: 2ea56c337f76f11458a2998d5c7b7a1f,
+    type: 3}
+  goldBullseyePrefab: {fileID: 6182317033447582743, guid: 5a7a2b2b3acfc17419e1d446f104f6a7,
     type: 3}
   player: {fileID: 0}
   xDistanceMove: 5
