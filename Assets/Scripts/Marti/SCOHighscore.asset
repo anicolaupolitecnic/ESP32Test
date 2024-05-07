@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5793407dabd183f4b8cc1149a3a5c50f, type: 3}
   m_Name: SCOHighscore
   m_EditorClassIdentifier: 
-  HighscoreGame: 0
+  HighscoreGame: 5
