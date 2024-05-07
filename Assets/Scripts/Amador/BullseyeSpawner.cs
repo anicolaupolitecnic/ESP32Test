@@ -117,7 +117,7 @@ public class BullseyeSpawner : MonoBehaviour
         else
         {
             float randValue = Random.value;
-            Debug.Log(randValue);
+            //Debug.Log(randValue);
             float xDistanceNext = xDistancePossibilities[Random.Range(0, xDistancePossibilities.Length)];
             float yDistanceNext = yDistancePossibilities[Random.Range(0, yDistancePossibilities.Length)];
             //float zDistanceNext = zDistancePossibilities[Random.Range(0, zDistancePossibilities.Length)];
