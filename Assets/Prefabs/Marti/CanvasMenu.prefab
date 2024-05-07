@@ -1395,7 +1395,7 @@ GameObject:
   - component: {fileID: 2391413757322139966}
   m_Layer: 5
   m_Name: MenuHighscore
-  m_TagString: Untagged
+  m_TagString: Highscore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1633,8 +1633,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 960, y: 540}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 640, y: 480}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8614177596491237855
 Canvas:
@@ -1681,7 +1681,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5946289234943426291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1714,6 +1714,8 @@ MonoBehaviour:
   soundLibrary: {fileID: 11400000, guid: debdabb84c60dd545819507e0915fc1e, type: 2}
   principalMenu: {fileID: 8296197586595951714}
   highscoreMenu: {fileID: 6941326271927785469}
+  textHighscore: {fileID: 2975689563273739154}
+  scoHighscore: {fileID: 11400000, guid: 02613c593ca1f1241a321730ac697703, type: 2}
 --- !u!114 &7807565646120148808
 MonoBehaviour:
   m_ObjectHideFlags: 0
