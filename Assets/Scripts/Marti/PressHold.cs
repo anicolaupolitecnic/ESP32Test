@@ -60,7 +60,7 @@ public class PressHold : MonoBehaviour
 
         texteInici.gameObject.SetActive(false);
 
-        Vector3 enfrente = new Vector3(transform.position.x, transform.position.y + 10, transform.position.z + 2020);
+        Vector3 enfrente = new Vector3(transform.localPosition.x, transform.localPosition.y + 10, transform.localPosition.z + 2020);
 
         menuInstanciat = Instantiate(menuCanvas, enfrente, Quaternion.identity);
         gameMenu = menuInstanciat.GetComponent<GameMenu>();
