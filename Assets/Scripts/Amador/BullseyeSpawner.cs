@@ -109,8 +109,8 @@ public class BullseyeSpawner : MonoBehaviour
         if (firstSpawn)
         {
             //lastBullseye = transform.localPosition;
-            GameObject bullseye = Instantiate(bullseyePrefab, transform.position, Quaternion.identity);
-            bullseye.transform.LookAt(player);
+            transform.LookAt(player);
+            GameObject bullseye = Instantiate(bullseyePrefab, transform.position, transform.rotation);
             Destroy(bullseye, bullseyeTime);
             firstSpawn = false;
         }
