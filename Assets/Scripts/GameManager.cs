@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using TMPro;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -137,12 +134,6 @@ public class GameManager : MonoBehaviour
                 scorePanel.SetActive(false);
                 ShowFinalSore();
             }
-        }
-
-        if (Input.GetKeyUp(KeyCode.P))
-        {
-            SumFinalScore();
-            ShowFinalSore();
         }
     }
 

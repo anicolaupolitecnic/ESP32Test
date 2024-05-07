@@ -17,7 +17,7 @@ public class RayCastController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0 || Input.GetMouseButtonDown(0))
         {
             TirarRaycast();
         }
@@ -57,8 +57,8 @@ public class RayCastController : MonoBehaviour
                     AudioManager.I.PlaySound(SoundName.Impact);
                     break;
             }
-            //Destroy(hit.collider.transform.root.gameObject);
-            //hit.collider.transform.root.gameObject.GetComponent<Bullseye>().SpawnAnother();
+            Destroy(hit.collider.transform.root.gameObject);
+            hit.collider.transform.root.gameObject.GetComponent<Bullseye>().SpawnAnother();
         }
         else
         {
