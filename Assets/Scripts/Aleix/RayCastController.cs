@@ -6,9 +6,8 @@ using static DianaController;
 public class RayCastController : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
-    // Start is called before the first frame update
-
-    // Update is called once per frame
+    [SerializeField] private float timer = 0f;
+    [SerializeField] private float delay = 1f;
 
     private void Start()
     {
@@ -17,11 +16,16 @@ public class RayCastController : MonoBehaviour
 
     void Update()
     {
+        timer += Time.deltaTime;
+
         if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0 || Input.GetMouseButtonDown(0))
         {
-            TirarRaycast();
+            if (timer >= delay)
+            {
+                TirarRaycast();
+                timer = 0f;
+            }
         }
-
     }
 
     private void TirarRaycast()
