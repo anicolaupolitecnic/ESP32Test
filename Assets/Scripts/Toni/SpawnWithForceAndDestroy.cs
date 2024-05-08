@@ -19,26 +19,20 @@ public class SpawnWithForceAndDestroy : MonoBehaviour
         {
             if (timer >= delay)
             {
-                SpawnObject();
+                Shoot();
                 timer = 0f;
             }
         }
     }
 
-    void SpawnObject()
+    void Shoot()
     {
-        // Instantiate the object
-        GameObject spawnedObject = Instantiate(objectToSpawn, transform.position, Quaternion.identity);
-
-        // Apply force using the local forward direction
-        Rigidbody rb = spawnedObject.GetComponent<Rigidbody>();
-        if (rb != null)
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit))
         {
-            // Apply force to the spawned object
-            rb.AddForce(transform.forward * spawnForce, ForceMode.Impulse);
-        }
+            if (hit.collider.gameObject.name == "Diana") 
+            {
 
-        // Destroy the spawned object after delay
-        Destroy(spawnedObject, destroyDelay);
+            }
+        }
     }
 }

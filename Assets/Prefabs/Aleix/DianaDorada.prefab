@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 5297980780880765316}
   m_Layer: 0
   m_Name: DianaDorada
-  m_TagString: Untagged
+  m_TagString: Diana
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
