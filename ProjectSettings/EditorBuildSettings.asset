@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Marti/Menu.unity
-    guid: 8c3ae5dd342a2cc49977c56271f7b879
+    path: Assets/Scenes/Master/Menu.unity
+    guid: e7a36e56e6cce0b4191ba45fc5ae269d
   - enabled: 1
-    path: Assets/Scenes/Master/MasterScene.unity
+    path: Assets/Scenes/Master/Joc.unity
     guid: de58fad5c573d3340b3b5564cc6625f6
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6ee72d15cf39dd748a13eac57397b9af,

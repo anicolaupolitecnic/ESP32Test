@@ -17,13 +17,7 @@ public class PressHold : MonoBehaviour
     public KeyCode key = KeyCode.Space; // Tecla por defecto: Espacio
     public float speed = 1f; // Velocidad de movimiento
     private bool holderOk;
-    
 
-
-    void Start()
-    {
-
-    }
 
     private void Update()
     {
@@ -43,7 +37,7 @@ public class PressHold : MonoBehaviour
             if (slider.value == slider.maxValue)
             {
                 holderOk = true;
-                ComençarJoc();
+                ComencarJoc();
             }
         }
         if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0 || Input.GetMouseButtonDown(0))
@@ -52,7 +46,7 @@ public class PressHold : MonoBehaviour
         }
     }
 
-    private void ComençarJoc()
+    private void ComencarJoc()
     {
         iniciJoc = true;
 

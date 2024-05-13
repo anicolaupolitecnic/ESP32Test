@@ -23,7 +23,7 @@ public class GameMenu : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("StartGame");
-        SceneManager.LoadScene("MasterScene");
+        SceneManager.LoadScene(1);
     }
 
     //Tancar Menu Puntuacio

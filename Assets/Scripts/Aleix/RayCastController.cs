@@ -32,7 +32,7 @@ public class RayCastController : MonoBehaviour
     {
         AudioManager.I.PlaySound(SoundName.Shot);
 
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit))
         {
             switch (hit.collider.gameObject.GetComponent<DianaController>().GetPointType())
             {
