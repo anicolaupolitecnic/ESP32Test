@@ -7,7 +7,10 @@ using UnityEngine.UI;
 public class MenuRaycastController : MonoBehaviour
 {
     [SerializeField] private Button texteInici;
-    [SerializeField] private GameMenu menuCanvas;
+    [SerializeField] private GameObject menuCanvas;
+    private GameManager gameManager;
+    private GameObject menuInstanciat;
+    private GameMenu gameMenu;
 
     private int contador;
     private bool iniciJoc;
@@ -17,7 +20,7 @@ public class MenuRaycastController : MonoBehaviour
     {
         iniciJoc = true;
         contador = 0;
-
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -33,9 +36,11 @@ public class MenuRaycastController : MonoBehaviour
             {
                 texteInici.gameObject.SetActive(false);
 
-                Vector3 enfrente = new Vector3(transform.position.x, transform.position.y + 10, transform.position.z+ 2020);
+                Vector3 enfrente = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y + 10, Camera.main.transform.position.z+ 2020);
 
-                Instantiate(menuCanvas, enfrente, Quaternion.identity);
+                menuInstanciat = Instantiate(menuCanvas, enfrente, Quaternion.identity);
+                menuInstanciat.transform.SetParent(gameManager.menuGO.transform);
+                gameMenu = menuInstanciat.GetComponent<GameMenu>();
 
                 iniciJoc = false;
             }
@@ -45,18 +50,18 @@ public class MenuRaycastController : MonoBehaviour
 
     private void TirarRaycast()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit))
         {
             switch (hit.collider.gameObject.name)
             {
                 case "Play":
-                    menuCanvas.StartGame();
+                    menuCanvas.GetComponent<GameMenu>().StartGame();
                     break;
                 case "HighScore":
-                    menuCanvas.OpenMenuHighScore();
+                    menuCanvas.GetComponent<GameMenu>().OpenMenuHighScore();
                     break;
                 case "Back":
-                    menuCanvas.CloseMenuHighScore();
+                    menuCanvas.GetComponent<GameMenu>().CloseMenuHighScore();
                     break;
             }
         }

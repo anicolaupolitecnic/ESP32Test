@@ -8,6 +8,7 @@ public class PressHold : MonoBehaviour
     [SerializeField] private Button texteInici;
     [SerializeField] private GameObject menuCanvas;
 
+    private GameManager gameManager;
     private GameMenu gameMenu;
 
     private GameObject menuInstanciat;
@@ -18,6 +19,11 @@ public class PressHold : MonoBehaviour
     public float speed = 1f; // Velocidad de movimiento
     private bool holderOk;
 
+
+    private void Start()
+    {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+    }
 
     private void Update()
     {
@@ -57,6 +63,7 @@ public class PressHold : MonoBehaviour
         Vector3 enfrente = new Vector3(transform.localPosition.x, transform.localPosition.y + 10, transform.localPosition.z + 2020);
 
         menuInstanciat = Instantiate(menuCanvas, enfrente, Quaternion.identity);
+        menuInstanciat.transform.SetParent(gameManager.transform);
         gameMenu = menuInstanciat.GetComponent<GameMenu>();
     }
 

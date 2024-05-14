@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static DianaController;
 
-public class GameManager : MonoBehaviour
+public class GameplayManager : MonoBehaviour
 {
     // No canviar ordre de textMesh del ispector
     [SerializeField] private List<TextMeshProUGUI> puntuationTextList;
@@ -212,5 +212,7 @@ public class GameManager : MonoBehaviour
         }
         finalScorePanel.SetActive(true);
         buttonPanel.SetActive(true);
+        //finalScorePanel.transform.parent.transform.position = Camera.main.transform.position;
+        finalScorePanel.transform.parent.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y + 10, Camera.main.transform.position.z);
     }
 }

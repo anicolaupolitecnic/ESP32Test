@@ -19,11 +19,15 @@ public class GameMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textHighscore;
     [SerializeField] private SCOHighscore scoHighscore;
 
+    private GameObject gameManager;
+
     //Obrir Scene Joc
     public void StartGame()
     {
         Debug.Log("StartGame");
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
+
+        GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().EnableJocGO();
     }
 
     //Tancar Menu Puntuacio

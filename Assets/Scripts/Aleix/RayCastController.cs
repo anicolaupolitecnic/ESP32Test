@@ -5,7 +5,7 @@ using static DianaController;
 
 public class RayCastController : MonoBehaviour
 {
-    [SerializeField] private GameManager gameManager;
+    [SerializeField] private GameplayManager gameManager;
     [SerializeField] private float timer = 0f;
     [SerializeField] private float delay = 1f;
 

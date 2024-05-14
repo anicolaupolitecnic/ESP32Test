@@ -8,6 +8,8 @@ TagManager:
   - Highscore
   - BullseyeSpawner
   - Diana
+  - GameManager
+  - MenuGO
   layers:
   - Default
   - TransparentFX
