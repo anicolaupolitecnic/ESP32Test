@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     {
         menuGO.SetActive(false);
         jocGO.SetActive(true);
+        GameObject.FindGameObjectWithTag("GameplayManager").GetComponent<GameplayManager>().RestartGame();
     }
 
     public void EnableMenuGO()

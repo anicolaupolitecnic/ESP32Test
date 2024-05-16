@@ -20,7 +20,7 @@ public class GameplayManager : MonoBehaviour
 
     [Header("Timer Settings")]
     [SerializeField] private TextMeshProUGUI timerText;
-    [SerializeField] private float timeRemaining = 90;
+    [SerializeField] private float timeRemaining;
 
     [Header("Score Puntuation")]
     [SerializeField] private int bad;
@@ -61,7 +61,7 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreTotal;
 
 
-    private bool timerIsRunning = true;
+    public bool timerIsRunning = true;
 
     private Dictionary<PointsHit, TextMeshProUGUI> canvasPuntuation;
     private Dictionary<PointsHit, int> puntuationList;
@@ -74,10 +74,14 @@ public class GameplayManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        timerIsRunning = true;
+        
         puntuationList = new Dictionary<PointsHit, int>();
         canvasPuntuation = new Dictionary<PointsHit, TextMeshProUGUI>();
         scoreList = new Dictionary<PointsHit, int>();
         finalScoreList = new Dictionary<PointsHit, int>();
+       
+        count = 0;
         foreach (PointsHit typePoint in Enum.GetValues(typeof(PointsHit)))
         {
             puntuationList.Add(typePoint, 0);
@@ -110,9 +114,9 @@ public class GameplayManager : MonoBehaviour
             count++;
         }
 
-        btnReplay.onClick.AddListener(() =>
-            SceneManager.LoadScene(0)
-        );
+        //btnReplay.onClick.AddListener(() =>
+        //    SceneManager.LoadScene(0)
+        //);
     }
 
     // Update is called once per frame
@@ -135,6 +139,58 @@ public class GameplayManager : MonoBehaviour
                 ShowFinalSore();
             }
         }
+    }
+
+    public void RestartGame()
+    {
+        timeRemaining = 90;
+        timerIsRunning = true;
+
+
+        puntuationList = new Dictionary<PointsHit, int>();
+        canvasPuntuation = new Dictionary<PointsHit, TextMeshProUGUI>();
+        scoreList = new Dictionary<PointsHit, int>();
+        finalScoreList = new Dictionary<PointsHit, int>();
+
+        count = 0;
+        foreach (PointsHit typePoint in Enum.GetValues(typeof(PointsHit)))
+        {
+            puntuationList.Add(typePoint, 0);
+            canvasPuntuation.Add(typePoint, puntuationTextList[count]);
+            switch (typePoint)
+            {
+                case PointsHit.Bad:
+                    scoreList.Add(typePoint, bad);
+                    break;
+
+                case PointsHit.Good:
+                    scoreList.Add(typePoint, good);
+                    break;
+
+                case PointsHit.VeryGood:
+                    scoreList.Add(typePoint, veryGood);
+                    break;
+
+                case PointsHit.Perfect:
+                    scoreList.Add(typePoint, perfect);
+                    break;
+
+                case PointsHit.Gold:
+                    scoreList.Add(typePoint, gold);
+                    break;
+                case PointsHit.Miss:
+                    scoreList.Add(typePoint, miss);
+                    break;
+            }
+            count++;
+        }
+
+
+        timePanel.SetActive(true);
+        scorePanel.SetActive(true);
+
+        finalScorePanel.SetActive(false);
+        buttonPanel.SetActive(false);
     }
 
     public void SetNewPuntuation(PointsHit pointType)

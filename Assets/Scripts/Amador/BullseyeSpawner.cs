@@ -8,6 +8,8 @@ using static UnityEngine.GraphicsBuffer;
 
 public class BullseyeSpawner : MonoBehaviour
 {
+    private GameplayManager gpManager;
+
     [SerializeField] private GameObject bullseyePrefab;
     [SerializeField] private GameObject goldBullseyePrefab;
     [SerializeField] private Transform player;
@@ -37,6 +39,8 @@ public class BullseyeSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gpManager = GameObject.FindGameObjectWithTag("GameplayManager").GetComponent<GameplayManager>();
+
         xDistancePossibilities = new float[]
         {
             xDistanceMove,
@@ -63,7 +67,8 @@ public class BullseyeSpawner : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > spawnTime)
         {
-            SpawnBullseye();
+            if (gpManager.timerIsRunning)
+                SpawnBullseye();
         }
 
         //float currentDistance = Vector3.Distance(player.position, transform.position);

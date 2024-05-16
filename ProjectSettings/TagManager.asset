@@ -10,6 +10,7 @@ TagManager:
   - Diana
   - GameManager
   - MenuGO
+  - GameplayManager
   layers:
   - Default
   - TransparentFX

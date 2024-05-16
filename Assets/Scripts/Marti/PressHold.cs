@@ -8,6 +8,7 @@ public class PressHold : MonoBehaviour
     [SerializeField] private Button texteInici;
     [SerializeField] private GameObject menuCanvas;
 
+    private GameplayManager gpManager;
     private GameManager gameManager;
     private GameMenu gameMenu;
 
@@ -23,6 +24,7 @@ public class PressHold : MonoBehaviour
     private void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        gpManager = GameObject.FindGameObjectWithTag("GameplayManager").GetComponent<GameplayManager>();
     }
 
     private void Update()
@@ -55,6 +57,7 @@ public class PressHold : MonoBehaviour
     private void ComencarJoc()
     {
         iniciJoc = true;
+        gpManager.timerIsRunning = true;
 
         slider.gameObject.SetActive(false);
 
