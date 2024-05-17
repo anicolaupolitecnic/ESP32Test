@@ -64,13 +64,13 @@ public class MenuRaycastController : MonoBehaviour
             switch (hit.collider.gameObject.name)
             {
                 case "Play":
-                    menuCanvas.GetComponent<GameMenu>().StartGame();
+                    gameMenu.StartGame();
                     break;
                 case "HighScore":
-                    menuCanvas.GetComponent<GameMenu>().OpenMenuHighScore();
+                    gameMenu.OpenMenuHighScore();
                     break;
                 case "Back":
-                    menuCanvas.GetComponent<GameMenu>().CloseMenuHighScore();
+                    gameMenu.CloseMenuHighScore();
                     break;
             }
         }

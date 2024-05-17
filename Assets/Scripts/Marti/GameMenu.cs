@@ -24,13 +24,15 @@ public class GameMenu : MonoBehaviour
     //Obrir Scene Joc
     public void StartGame()
     {
+        Debug.Log("StartGame");
+        //SceneManager.LoadScene(1);
+
         GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().EnableJocGO();
     }
 
     //Tancar Menu Puntuacio
     public void CloseMenuHighScore()
     {
-        Debug.Log("Tancar menu highscore");
         highscoreMenu.SetActive(false);
         principalMenu.SetActive(true);
     }
