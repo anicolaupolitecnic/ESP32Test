@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static DianaController;
@@ -8,8 +7,8 @@ using static DianaController;
 public class RayCastController : MonoBehaviour
 {
     [SerializeField] private GameplayManager gameManager;
-    [SerializeField] private float timer = 0f;
-    [SerializeField] private float delay = 0.25f;
+    [SerializeField] private float lastShotTime = 0f;
+    [SerializeField] private float delay = 0.175f;
     private GameplayManager gpManager;
     private int contador = 0;
 
@@ -22,14 +21,12 @@ public class RayCastController : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
-
         if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0 || Input.GetMouseButtonDown(0))
         {
-            if (timer >= delay)
+            if (Time.time - lastShotTime >= delay)
             {
                 TirarRaycast();
-                timer = 0f;
+                lastShotTime = Time.time;
             }
         }
     }

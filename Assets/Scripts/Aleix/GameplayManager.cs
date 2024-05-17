@@ -20,7 +20,8 @@ public class GameplayManager : MonoBehaviour
 
     [Header("Timer Settings")]
     [SerializeField] private TextMeshProUGUI timerText;
-    [SerializeField] private float timeRemaining;
+    private float timeRemaining;
+    [SerializeField] private float timeRemainingInit;
 
     [Header("Score Puntuation")]
     [SerializeField] private int bad;
@@ -74,6 +75,7 @@ public class GameplayManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        timeRemaining = timeRemainingInit;
         timerIsRunning = true;
         
         puntuationList = new Dictionary<PointsHit, int>();
@@ -141,11 +143,23 @@ public class GameplayManager : MonoBehaviour
         }
     }
 
+    private void RestartScore()
+    {
+        if (canvasPuntuation != null)
+            foreach (KeyValuePair<PointsHit, TextMeshProUGUI> entry in canvasPuntuation)
+            {
+                TextMeshProUGUI textMeshPro = entry.Value;
+                textMeshPro.text = "0";
+            }
+    }
+
     public void RestartGame()
     {
-        timeRemaining = 90;
+        timeRemaining = timeRemainingInit;
         timerIsRunning = true;
+        finalScore = 0;
 
+        RestartScore();
 
         puntuationList = new Dictionary<PointsHit, int>();
         canvasPuntuation = new Dictionary<PointsHit, TextMeshProUGUI>();

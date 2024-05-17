@@ -740,7 +740,7 @@ MonoBehaviour:
   buttonPanel: {fileID: 6748400164811289866}
   btnReplay: {fileID: 1130558021906101550}
   timerText: {fileID: 1217153814249156007}
-  timeRemaining: 5
+  timeRemainingInit: 90
   bad: 10
   good: 25
   veryGood: 50
@@ -781,7 +781,6 @@ GameObject:
   - component: {fileID: 625691792}
   - component: {fileID: 625691791}
   - component: {fileID: 625691790}
-  - component: {fileID: 625691794}
   - component: {fileID: 625691795}
   m_Layer: 5
   m_Name: Canvas
@@ -875,24 +874,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &625691794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 625691789}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b3427058179c8243b8962ed0999ed66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  texteInici: {fileID: 29896030}
-  menuCanvas: {fileID: 9214908192108487720, guid: 37cc068d969308d498b29ec5f423aabb,
-    type: 3}
-  slider: {fileID: 1354979593}
-  key: 32
-  speed: 1
 --- !u!114 &625691795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -908,6 +889,8 @@ MonoBehaviour:
   texteInici: {fileID: 29896030}
   menuCanvas: {fileID: 9214908192108487720, guid: 37cc068d969308d498b29ec5f423aabb,
     type: 3}
+  lastShotTime: 0
+  delay: 0.175
 --- !u!1 &646522907
 GameObject:
   m_ObjectHideFlags: 0
@@ -2362,7 +2345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 568638451}
-  timer: 0
+  lastShotTime: 0
   delay: 1
 --- !u!1 &2102731014
 GameObject:

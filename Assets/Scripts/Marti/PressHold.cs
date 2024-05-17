@@ -8,6 +8,9 @@ public class PressHold : MonoBehaviour
     [SerializeField] private Button texteInici;
     [SerializeField] private GameObject menuCanvas;
 
+    [SerializeField] private float lastShotTime = 0f;
+    [SerializeField] private float delay = 0.175f;
+
     private GameplayManager gpManager;
     private GameManager gameManager;
     private GameMenu gameMenu;
@@ -50,7 +53,11 @@ public class PressHold : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0 || Input.GetMouseButtonDown(0))
         {
-            TirarRaycast();
+            if (Time.time - lastShotTime >= delay)
+            {
+                TirarRaycast();
+                lastShotTime = Time.time;
+            }
         }
     }
 
@@ -72,6 +79,7 @@ public class PressHold : MonoBehaviour
 
     private void TirarRaycast()
     {
+        AudioManager.I.PlaySound(SoundName.Shot);
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit))
         {
             switch (hit.collider.gameObject.name)

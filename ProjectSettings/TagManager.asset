@@ -5,12 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - AudioManager
-  - Highscore
   - BullseyeSpawner
   - Diana
   - GameManager
   - MenuGO
   - GameplayManager
+  - GoBackMenu
+  - MenuPrincipal
+  - MenuHighScore
   layers:
   - Default
   - TransparentFX
