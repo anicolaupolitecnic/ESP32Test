@@ -39,7 +39,7 @@ public class MenuRaycastController : MonoBehaviour
 
             contador++;
 
-            if (iniciJoc & contador == 3)
+            if (iniciJoc & contador >= 3)
             {
                 texteInici.gameObject.SetActive(false);
 
@@ -52,7 +52,6 @@ public class MenuRaycastController : MonoBehaviour
                 iniciJoc = false;
             }
         }
-
     }
 
     private void TirarRaycast()
@@ -73,11 +72,6 @@ public class MenuRaycastController : MonoBehaviour
                     gameMenu.CloseMenuHighScore();
                     break;
             }
-        }
-        else
-        {
-            //Debug.Log("Miss");
-   
         }
     }
 }
